@@ -56,6 +56,7 @@
         
         // 设置右边的更多按钮
         viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(more) image:@"navigationbar_more" highImage:@"navigationbar_more_highlighted"];
+        //子控制器是可以覆写导航控制器的左、右两边的按钮；在对应的试图控制器中进行设置 self.navigationItem.leftBarButtonItem即可(我们这样写代码，对项目整体代码的侵入性非常小！)
     }
 
     [super pushViewController:viewController animated:animated];

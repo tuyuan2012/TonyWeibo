@@ -32,6 +32,7 @@
     HWSearchBar *searchBar = [HWSearchBar searchBar];
     searchBar.width = 300;
     searchBar.height = 30;
+    
     self.navigationItem.titleView = searchBar;
 }
 
