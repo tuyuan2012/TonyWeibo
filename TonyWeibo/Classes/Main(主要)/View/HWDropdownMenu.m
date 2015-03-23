@@ -74,6 +74,7 @@
  */
 - (void)showFrom:(UIView *)from
 {
+    //self.view.window = [UIApplication sharedApplication].keyWindow;//这个window满足不了需求，它不是最外面的window
     // 1.获得最上面的窗口
     UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
     

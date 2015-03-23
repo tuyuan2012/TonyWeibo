@@ -19,6 +19,10 @@
       "idiom" : "universal",
       "filename" : "compose_emotion_table_right_selected@2x.png",
       "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

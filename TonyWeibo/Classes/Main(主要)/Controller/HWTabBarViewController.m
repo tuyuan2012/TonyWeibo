@@ -32,12 +32,16 @@
     HWMessageCenterViewController *messageCenter = [[HWMessageCenterViewController alloc] init];
     [self addChildVc:messageCenter title:@"消息" image:@"tabbar_message_center" selectedImage:@"tabbar_message_center_selected"];
     
+    //实现中间『+』号的效果，有问题，则这是一个控制器：不好，无端的多了一个控制器；同事『+』效果满足不了需求
+    //此时需要在系统的tabbar中加一个『+』按钮
+//    [self addChildViewController:[[UIViewController alloc] init]];
+    
     HWDiscoverViewController *discover = [[HWDiscoverViewController alloc] init];
     [self addChildVc:discover title:@"发现" image:@"tabbar_discover" selectedImage:@"tabbar_discover_selected"];
     
     HWProfileViewController *profile = [[HWProfileViewController alloc] init];
     [self addChildVc:profile title:@"我" image:@"tabbar_profile" selectedImage:@"tabbar_profile_selected"];
-    
+
     // 2.更换系统自带的tabbar
     HWTabBar *tabBar = [[HWTabBar alloc] init];
     [self setValue:tabBar forKeyPath:@"tabBar"];

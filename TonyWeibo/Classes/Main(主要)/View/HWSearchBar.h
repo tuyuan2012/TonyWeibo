@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  自定义搜索框
+ */
 @interface HWSearchBar : UITextField
 + (instancetype)searchBar;
 @end

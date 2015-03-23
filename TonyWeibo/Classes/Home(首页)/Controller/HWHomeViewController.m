@@ -350,7 +350,7 @@
  *  标题点击
  */
 - (void)titleClick:(UIButton *)titleButton
-{
+{   
     // 1.创建下拉菜单
     HWDropdownMenu *menu = [HWDropdownMenu menu];
     menu.delegate = self;
