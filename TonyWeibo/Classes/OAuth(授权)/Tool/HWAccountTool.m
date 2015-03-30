@@ -20,7 +20,7 @@
  */
 + (void)saveAccount:(HWAccount *)account
 {
-    // 自定义对象的存储必须用NSKeyedArchiver，不再有什么writeToFile方法
+    // 自定义对象的存储必须用NSKeyedArchiver，不再有什么writeToFile（字典、数组、字符串的方法））方法
     [NSKeyedArchiver archiveRootObject:account toFile:HWAccountPath];
 }
 
@@ -32,6 +32,7 @@
  */
 + (HWAccount *)account
 {
+    HWLog(@"路径--->%@",HWAccountPath);
     // 加载模型
     HWAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:HWAccountPath];
     

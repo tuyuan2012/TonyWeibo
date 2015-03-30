@@ -40,6 +40,15 @@
     [super layoutSubviews];
     // 如果仅仅是调整按钮内部titleLabel和imageView的位置，那么在layoutSubviews中单独设置位置即可
     
+    /**
+     * 
+        UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
+        该方法的参数只支持像素（你传点它是不会乘以屏幕伸缩比的），但iOS开发中那些获得的宽度和高度都是点坐标系
+        UIImage *image = [UIImage imageName:@"pic"];
+        CGFloat width = image.width;//这个width是坐标轴上的点坐标，比如13
+        //但该图片在retina屏上是pic@2x.png，像素实际为26
+        [UIScreen mainScreen].scale;//伸缩参数，可以通过该参数判断屏幕伸缩比例，判断是否为retina屏幕
+     */
     // 1.计算titleLabel的frame
     self.titleLabel.x = self.imageView.x;
     

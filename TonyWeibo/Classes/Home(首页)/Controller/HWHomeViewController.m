@@ -421,6 +421,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HWLog(@"didSelectRowAtIndexPath---%d", indexPath.row);
+    HWLog(@"didSelectRowAtIndexPath---%ld", indexPath.row);
 }
 @end

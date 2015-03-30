@@ -95,7 +95,7 @@
     // 2.发送请求
     [HWHttpTool post:@"https://api.weibo.com/oauth2/access_token" params:params success:^(id json) {
         [MBProgressHUD hideHUD];
-        
+
         // 将返回的账号字典数据 --> 模型，存进沙盒
         HWAccount *account = [HWAccount accountWithDict:json];
         // 存储账号信息

@@ -42,9 +42,15 @@
     HWProfileViewController *profile = [[HWProfileViewController alloc] init];
     [self addChildVc:profile title:@"我" image:@"tabbar_profile" selectedImage:@"tabbar_profile_selected"];
 
+    /**
+     系统API：
+     @property(nonatomic,readonly) UITabBar *tabBar NS_AVAILABLE_IOS(3_0); // Provided for -[UIActionSheet showFromTabBar:]. Attempting to modify the contents of the tab bar directly will throw an exception.
+     */
     // 2.更换系统自带的tabbar
     HWTabBar *tabBar = [[HWTabBar alloc] init];
-    [self setValue:tabBar forKeyPath:@"tabBar"];
+    //kvc不管你是私有还不是私有的，我都能改！强暴！
+    //此时系统的tabBar就是我们自己定义的tabBar
+    [self setValue:tabBar forKeyPath:@"tabBar"];//用kvc改变属性变量，无论是只读还是可读写的
     /*
      [self setValue:tabBar forKeyPath:@"tabBar"];相当于self.tabBar = tabBar;
      [self setValue:tabBar forKeyPath:@"tabBar"];这行代码过后，tabBar的delegate就是HWTabBarViewController

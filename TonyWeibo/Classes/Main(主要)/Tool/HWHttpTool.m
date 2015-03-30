@@ -15,7 +15,7 @@
 {
     // 1.创建请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    
+
     // 2.发送请求
     [mgr GET:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {

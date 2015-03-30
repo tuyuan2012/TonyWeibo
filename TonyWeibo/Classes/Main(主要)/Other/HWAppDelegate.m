@@ -106,6 +106,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - 成功程序内存警告
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
 {
     SDWebImageManager *mgr = [SDWebImageManager sharedManager];

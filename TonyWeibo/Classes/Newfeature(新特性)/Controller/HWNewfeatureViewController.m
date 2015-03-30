@@ -26,7 +26,7 @@
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     
-    // 2.添加图片到scrollView中
+    // 2.添加图片到scrollView中，可用cellectionview来做（处理循环重用的问题）
     CGFloat scrollW = scrollView.width;
     CGFloat scrollH = scrollView.height;
     for (int i = 0; i<HWNewfeatureCount; i++) {
@@ -130,7 +130,7 @@
 //    shareBtn.imageEdgeInsets = UIEdgeInsetsMake(20, 0, 0, 50);
     
     
-    
+    //EdgeInsets：内边距
 //    shareBtn.titleEdgeInsets
 //    shareBtn.imageEdgeInsets
 //    shareBtn.contentEdgeInsets

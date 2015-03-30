@@ -43,10 +43,13 @@
     }
 }
 
+/**
+ *  覆盖tabar的排布、排版
+ */
 - (void)layoutSubviews
 {
 #warning [super layoutSubviews] 一定要调用
-    [super layoutSubviews];
+    [super layoutSubviews];//如果不调用，否则tabbarButton的点击事件等其他相关功能就会缺失了！
     
     // 1.设置加号按钮的位置
     self.plusBtn.centerX = self.width * 0.5;

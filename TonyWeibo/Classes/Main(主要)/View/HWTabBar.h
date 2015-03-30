@@ -18,4 +18,5 @@
 
 @interface HWTabBar : UITabBar
 @property (nonatomic, weak) id<HWTabBarDelegate> delegate;
+
 @end
