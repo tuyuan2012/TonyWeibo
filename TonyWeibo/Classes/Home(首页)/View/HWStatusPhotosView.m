@@ -39,18 +39,19 @@
     }
     
     // 遍历所有的图片控件，设置图片
-    for (int i = 0; i<self.subviews.count; i++) {
+    for (int i = 0; i<self.subviews.count; i++) {//取出所有的图片控件
         HWStatusPhotoView *photoView = self.subviews[i];
         
         if (i < photosCount) { // 显示
             photoView.photo = photos[i];
             photoView.hidden = NO;
-        } else { // 隐藏
+        } else { // 隐藏，得考虑循环利用
             photoView.hidden = YES;
         }
     }
 }
 
+/**设置该view的子控件的尺寸*/
 - (void)layoutSubviews
 {
     [super layoutSubviews];

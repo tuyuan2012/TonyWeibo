@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 @class HWPhoto;
-
+/**继承UIImageView*/
 @interface HWStatusPhotoView : UIImageView
+/**photo模型*/
 @property (nonatomic, strong) HWPhoto *photo;
 @end

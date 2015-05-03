@@ -47,9 +47,10 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    /**两个日期之间的差值*/
     NSDateComponents *cmps = [calendar components:unit fromDate:date toDate:now options:0];
     
-    return cmps.year == 0 && cmps.month == 0 && cmps.day == 1;
+    return cmps.year == 0 && cmps.month == 0 && cmps.day == 1;/**相差年、月是0；然后天相差是1*/
 }
 
 /**
@@ -59,7 +60,7 @@
 {
     NSDate *now = [NSDate date];
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yyyy-MM-dd";
+    fmt.dateFormat = @"yyyy-MM-dd";/**获取年月日字符串*/
     
     NSString *dateStr = [fmt stringFromDate:self];
     NSString *nowStr = [fmt stringFromDate:now];

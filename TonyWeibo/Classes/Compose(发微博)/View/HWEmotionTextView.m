@@ -70,11 +70,30 @@
 
 /**
  selectedRange :
- 1.本来是用来控制textView的文字选中范围
- 2.如果selectedRange.length为0，selectedRange.location就是textView的光标位置
- 
- 关于textView文字的字体
- 1.如果是普通文字（text），文字大小由textView.font控制
- 2.如果是属性文字（attributedText），文字大小不受textView.font控制，应该利用NSMutableAttributedString的- (void)addAttribute:(NSString *)name value:(id)value range:(NSRange)range;方法设置字体
+     1.本来是用来控制textView的文字选中范围
+     2.如果selectedRange.length为0，selectedRange.location就是textView的光标位置
+     
+     关于textView文字的字体
+     1.如果是普通文字（text），文字大小由textView.font控制
+     2.如果是属性文字（attributedText），文字大小不受textView.font控制，应该利用NSMutableAttributedString的- (void)addAttribute:(NSString *)name value:(id)value range:(NSRange)range;方法设置字体
  **/
+
+/**
+ UITextField:
+     1.文字永远是一行，不能显示多行文字
+     2.有placehoder属性设置占位文字
+     3.继承自UIControl
+     4.监听行为
+     1> 设置代理
+     2> addTarget:action:forControlEvents:
+     3> 通知:UITextFieldTextDidChangeNotification
+     
+     UITextView:
+     1.能显示任意行文字
+     2.不能设置占位文字
+     3.继承自UIScollView
+     4.监听行为
+     1> 设置代理
+     2> 通知:UITextViewTextDidChangeNotification
+ */
 @end

@@ -67,6 +67,7 @@
     return btn;
 }
 
+/**该视图的子视图的布局放在该方法内，统一处理*/
 - (void)layoutSubviews
 {
     [super layoutSubviews];

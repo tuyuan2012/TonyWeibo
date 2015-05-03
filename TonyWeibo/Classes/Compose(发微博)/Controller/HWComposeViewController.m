@@ -61,6 +61,9 @@
     
     // 添加相册
     [self setupPhotosView];
+    
+//    self.automaticallyAdjustsScrollViewInsets
+    //默认为YES，当scrollView（继承scrollView也可以）遇到UINavigationBar、UITabBar等控件的时候（无论scrollView是否被它们挡住的时候，都会自动设置；只看你这个scrollView所在的viewController的控制器是否被导航控制器包住），默认会设置scrollView的contentInset：64、49
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -91,7 +94,7 @@
     self.photosView = photosView;
 }
 /**
- * 添加工具条
+ * 添加工具条：放在键盘上面
  */
 - (void)setupToolbar
 {
@@ -143,7 +146,7 @@
  */
 - (void)setupTextView
 {
-    // 在这个控制器中，textView的contentInset.top默认会等于64
+    // 在这个控制器中，textView的contentInset.top默认会等于64（当TextView发现它所处的控制器有导航栏的时候，此时的top才会为64；这个是系统搞的）
     HWEmotionTextView *textView = [[HWEmotionTextView alloc] init];
     // 垂直方向上永远可以拖拽（有弹簧效果）
     textView.alwaysBounceVertical = YES;
@@ -191,6 +194,17 @@
  */
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
+    /**
+     notification.userInfo = @{
+     // 键盘弹出\隐藏后的frame
+     UIKeyboardFrameEndUserInfoKey = NSRect: {{0, 352}, {320, 216}},
+     // 键盘弹出\隐藏所耗费的时间
+     UIKeyboardAnimationDurationUserInfoKey = 0.25,
+     // 键盘弹出\隐藏动画的执行节奏（先快后慢，匀速）
+     UIKeyboardAnimationCurveUserInfoKey = 7
+     }
+     */
+    
     // 如果正在切换键盘，就不要执行后面的代码
     if (self.switchingKeybaord) return;
     
@@ -293,6 +307,7 @@
 #pragma mark - UITextViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
+    /**键盘退下去*/
     [self.view endEditing:YES];
 }
 

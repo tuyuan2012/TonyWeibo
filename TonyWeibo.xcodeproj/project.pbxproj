@@ -1715,6 +1715,11 @@
 				CLASSPREFIX = HW;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = heima;
+				TargetAttributes = {
+					18728E2619E37EB8008F3BFE = {
+						DevelopmentTeam = PCUTZ5RAXB;
+					};
+				};
 			};
 			buildConfigurationList = 18728E2219E37EB8008F3BFE /* Build configuration list for PBXProject "TonyWeibo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2182,11 +2187,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TonyWeibo/TonyWeibo-Prefix.pch";
 				INFOPLIST_FILE = "TonyWeibo/TonyWeibo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = TonyWeibo;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2196,11 +2204,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TonyWeibo/TonyWeibo-Prefix.pch";
 				INFOPLIST_FILE = "TonyWeibo/TonyWeibo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = TonyWeibo;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
