@@ -21,6 +21,7 @@
 
 @implementation HWEmotionPageView
 
+/**懒加载：该空间，可能显示，可能不显示*/
 - (HWEmotionPopView *)popView
 {
     if (!_popView) {

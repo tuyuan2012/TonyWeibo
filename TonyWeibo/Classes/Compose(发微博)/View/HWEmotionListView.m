@@ -46,7 +46,7 @@
         //直接改图片就不会出现平铺的效果
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_normal"] forKeyPath:@"pageImage"];
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_selected"] forKeyPath:@"currentPageImage"];
-        //下面这样设置图片，圆点图片会出现：图片宽度不够（小余圆圈的宽度），则图片循环平铺的效果，看起来别扭的很！
+//        下面这样设置图片，圆点图片会出现：图片宽度不够（小余圆圈的宽度），则图片循环平铺的效果，看起来别扭的很！
 //        pageControl.currentPageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"compose_keyboard_dot_selected"]];
 //        pageControl.pageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"compose_keyboard_dot_normal"]];
         [self addSubview:pageControl];

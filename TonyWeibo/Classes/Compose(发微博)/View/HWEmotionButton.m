@@ -18,6 +18,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        HWLog(@"initWithFrame");
         [self setup];
     }
     return self;
@@ -29,6 +30,7 @@
 - (id)initWithCoder:(NSCoder *)decoder
 {
     if (self = [super initWithCoder:decoder]) {
+        HWLog(@"initWithCoder");
         [self setup];
     }
     return self;
@@ -38,6 +40,9 @@
 //    
 //}
 
+/**
+ *  初始化代码
+ */
 - (void)setup
 {
     self.titleLabel.font = [UIFont systemFontOfSize:32];
@@ -52,7 +57,7 @@
  */
 - (void)awakeFromNib
 {
-    
+    HWLog(@"awakeFromNib");
 }
 
 - (void)setEmotion:(HWEmotion *)emotion
