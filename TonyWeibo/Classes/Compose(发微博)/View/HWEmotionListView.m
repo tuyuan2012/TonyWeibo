@@ -25,6 +25,7 @@
         UIScrollView *scrollView = [[UIScrollView alloc] init];
         scrollView.pagingEnabled = YES;
         scrollView.delegate = self;
+        /**scrollView默认有中两个子控件：水平滚动条、竖直滚动条*/
         // 去除水平方向的滚动条
         scrollView.showsHorizontalScrollIndicator = NO;
         // 去除垂直方向的滚动条
@@ -37,9 +38,17 @@
         // 当只有1页时，自动隐藏pageControl
         pageControl.hidesForSinglePage = YES;
         pageControl.userInteractionEnabled = NO;
-        // 设置内部的圆点图片
+        // 直接设置内部的圆点图片(kvc，我想改哪里就改哪里！)
+        /**
+            UIImage*        _currentPageImage;
+            UIImage*        _pageImage;
+         */
+        //直接改图片就不会出现平铺的效果
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_normal"] forKeyPath:@"pageImage"];
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_selected"] forKeyPath:@"currentPageImage"];
+        //下面这样设置图片，圆点图片会出现：图片宽度不够（小余圆圈的宽度），则图片循环平铺的效果，看起来别扭的很！
+//        pageControl.currentPageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"compose_keyboard_dot_selected"]];
+//        pageControl.pageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"compose_keyboard_dot_normal"]];
         [self addSubview:pageControl];
         self.pageControl = pageControl;
     }
@@ -60,15 +69,15 @@
     self.pageControl.numberOfPages = count;
 //    self.pageControl.numberOfPages = count > 1? count : 0;
     
-    // 2.创建用来显示每一页表情的控件
+    // 2.创建用来显示每一页表情的控件（创建多个UI控件是不会耗损内存，又不是图片！）
     for (int i = 0; i<count; i++) {
         HWEmotionPageView *pageView = [[HWEmotionPageView alloc] init];
         // 计算这一页的表情范围
         NSRange range;
         range.location = i * HWEmotionPageSize;
         // left：剩余的表情个数（可以截取的）
-        NSUInteger left = emotions.count - range.location;
-        if (left >= HWEmotionPageSize) { // 这一页足够20个
+        NSUInteger left = emotions.count - range.location;//剩余的总数
+        if (left >= HWEmotionPageSize) { // 这一页足够20个，则截取20个
             range.length = HWEmotionPageSize;
         } else {
             range.length = left;
@@ -86,6 +95,7 @@
     [self setNeedsLayout];
 }
 
+/**layoutSubviews中统一设置所有的东西*/
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -119,7 +129,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     double pageNo = scrollView.contentOffset.x / scrollView.width;
-    self.pageControl.currentPage = (int)(pageNo + 0.5);
+    self.pageControl.currentPage = (int)(pageNo + 0.5);//四舍五入
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    HWLog(@"%@",self.scrollView.subviews);
 }
 
 @end

@@ -61,7 +61,7 @@
     
     if (emotion.png) { // 有图片
         [self setImage:[UIImage imageNamed:emotion.png] forState:UIControlStateNormal];
-    } else if (emotion.code) { // 是emoji表情
+    } else if (emotion.code) { // 是emoji表情，就是文字，设置其大小，就是设置字体大小（对应图片的尺寸，如64*64@2x.png，字体大小此时就是32）！
         // 设置emoji
         [self setTitle:emotion.code.emoji forState:UIControlStateNormal];
     }

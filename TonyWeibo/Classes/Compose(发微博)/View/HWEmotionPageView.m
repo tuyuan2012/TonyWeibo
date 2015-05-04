@@ -101,13 +101,13 @@
 {
     _emotions = emotions;
     
-    NSUInteger count = emotions.count;
+    NSUInteger count = emotions.count;//    self.subviews.count也可以
     for (int i = 0; i<count; i++) {
         HWEmotionButton *btn = [[HWEmotionButton alloc] init];
         [self addSubview:btn];
         
         // 设置表情数据
-        btn.emotion = emotions[i];
+        btn.emotion = emotions[i];//取出模型
         
         // 监听按钮点击
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -130,8 +130,8 @@
         UIButton *btn = self.subviews[i + 1];
         btn.width = btnW;
         btn.height = btnH;
-        btn.x = inset + (i%HWEmotionMaxCols) * btnW;
-        btn.y = inset + (i/HWEmotionMaxCols) * btnH;
+        btn.x = inset + (i%HWEmotionMaxCols) * btnW;//i%HWEmotionMaxCols列号儿
+        btn.y = inset + (i/HWEmotionMaxCols) * btnH;//i/HWEmotionMaxCols行号二
     }
     
     // 删除按钮
