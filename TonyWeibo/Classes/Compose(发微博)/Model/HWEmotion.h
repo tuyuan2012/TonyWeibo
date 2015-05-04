@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/**
+ 面向对象开发
+ */
 @interface HWEmotion : NSObject
 /** 表情的文字描述 */
 @property (nonatomic, copy) NSString *chs;
