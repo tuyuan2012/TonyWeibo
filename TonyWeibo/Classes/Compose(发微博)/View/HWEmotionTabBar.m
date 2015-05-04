@@ -10,6 +10,7 @@
 #import "HWEmotionTabBarButton.h"
 
 @interface HWEmotionTabBar()
+/**当前选中的按钮*/
 @property (nonatomic, weak) HWEmotionTabBarButton *selectedBtn;
 @end
 

@@ -13,10 +13,10 @@
 //@property (nonatomic, strong, readonly) NSArray *photos;
 //- (NSArray *)photos;
 
-@property (nonatomic, strong, readonly) NSMutableArray *photos;
+@property (nonatomic, strong, readonly) NSMutableArray *photos;//此时就不搞懒加载了
 
 
-// 默认会自动生成setter和getter的声明和实现、_开头的成员变量
+// (nonatomic, strong）默认会自动生成setter和getter的声明和实现、_开头的成员变量
 // 如果手动实现了setter和getter，那么就不会再生成settter、getter的实现、_开头的成员变量
 
 //@property (nonatomic, strong, readonly) NSMutableArray *addedPhotos;

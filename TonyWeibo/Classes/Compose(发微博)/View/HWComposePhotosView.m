@@ -31,6 +31,7 @@
     return self;
 }
 
+/**懒加载*/
 - (void)addPhoto:(UIImage *)photo
 {
     UIImageView *photoView = [[UIImageView alloc] init];

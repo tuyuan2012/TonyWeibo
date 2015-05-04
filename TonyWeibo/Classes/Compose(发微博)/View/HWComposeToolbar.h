@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**枚举*/
 typedef enum {
     HWComposeToolbarButtonTypeCamera, // 拍照
     HWComposeToolbarButtonTypePicture, // 相册

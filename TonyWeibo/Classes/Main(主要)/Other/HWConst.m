@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 // 账号信息
-NSString * const HWAppKey = @"3235932662";
+NSString * const HWAppKey = @"1662641705";
 NSString * const HWRedirectURI = @"http://www.baidu.com";
-NSString * const HWAppSecret = @"227141af66d895d0dd8baca62f73b700";
+NSString * const HWAppSecret = @"054fe920073c6f4bb5953f8f966f1d72";
 
 // 通知
 // 表情选中的通知
