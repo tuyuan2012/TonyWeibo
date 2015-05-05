@@ -29,7 +29,7 @@
     } else if (emotion.png) {
         // 加载图片
         HWEmotionAttachment *attch = [[HWEmotionAttachment alloc] init];
-        
+
         // 传递模型
         attch.emotion = emotion;
         

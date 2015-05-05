@@ -14,6 +14,9 @@
     [self insertAttributedText:text settingBlock:nil];
 }
 
+/**
+    你这个方法功能就是插文字，那么你就乖乖负责插入文字；不要改我文字本身的熟性！
+ */
 - (void)insertAttributedText:(NSAttributedString *)text settingBlock:(void (^)(NSMutableAttributedString *))settingBlock
 {
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
@@ -21,7 +24,7 @@
     [attributedText appendAttributedString:self.attributedText];
     
     // 拼接其他文字
-    NSUInteger loc = self.selectedRange.location;
+    NSUInteger loc = self.selectedRange.location;//光标的位置
 //    [attributedText insertAttributedString:text atIndex:loc];
     [attributedText replaceCharactersInRange:self.selectedRange withAttributedString:text];
     
@@ -32,7 +35,16 @@
     
     self.attributedText = attributedText;
     
-    // 移除光标到表情的后面
+    // 移动光标到表情的后面：设置光标的位置
+    /**
+        selectedRange：
+        ·1、本来是用来控制textView的文字选中范围
+        ·2、如果selectedRange.length为0，那么selectedRange.location就是textView的光标位置
+     
+     关于textView文字的字体
+        ·1、如果是普通文字(text)，文字大小由textView.font控制
+        ·2、如果是属性文字(attributedText)，文字的大小受textView.font控制，应该利用NSMutableAttributedString的- (void)addAttribute:(NSString *)name value:(id)value range:(NSRange)range;方法来设置字体
+     */
     self.selectedRange = NSMakeRange(loc + 1, 0);
 }
 @end

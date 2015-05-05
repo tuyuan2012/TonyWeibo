@@ -36,6 +36,7 @@
 - (HWEmotionKeyboard *)emotionKeyboard
 {
     if (!_emotionKeyboard) {/**键盘只创建一次*/
+//    _emotionKeyboard.delegate = self;//层级结构太深，不宜用代理：此时用通知来实现消息的传递了！
         self.emotionKeyboard = [[HWEmotionKeyboard alloc] init];
         // 键盘的宽度
         self.emotionKeyboard.width = self.view.width;

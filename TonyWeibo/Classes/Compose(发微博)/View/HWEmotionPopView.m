@@ -32,7 +32,7 @@
     UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
     [window addSubview:self];
     
-    // 计算出被点击的按钮在window中的frame
+    // 计算出被点击的按钮在window中的frame：转换坐标系！
     CGRect btnFrame = [button convertRect:button.bounds toView:nil];
     self.y = CGRectGetMidY(btnFrame) - self.height; // 100
     self.centerX = CGRectGetMidX(btnFrame);

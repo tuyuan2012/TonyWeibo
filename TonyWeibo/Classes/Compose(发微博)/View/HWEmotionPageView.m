@@ -21,6 +21,7 @@
 
 @implementation HWEmotionPageView
 
+/**懒加载：该空间，可能显示，可能不显示*/
 - (HWEmotionPopView *)popView
 {
     if (!_popView) {
@@ -101,13 +102,13 @@
 {
     _emotions = emotions;
     
-    NSUInteger count = emotions.count;
+    NSUInteger count = emotions.count;//    self.subviews.count也可以
     for (int i = 0; i<count; i++) {
         HWEmotionButton *btn = [[HWEmotionButton alloc] init];
         [self addSubview:btn];
         
         // 设置表情数据
-        btn.emotion = emotions[i];
+        btn.emotion = emotions[i];//取出模型
         
         // 监听按钮点击
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -130,11 +131,11 @@
         UIButton *btn = self.subviews[i + 1];
         btn.width = btnW;
         btn.height = btnH;
-        btn.x = inset + (i%HWEmotionMaxCols) * btnW;
-        btn.y = inset + (i/HWEmotionMaxCols) * btnH;
+        btn.x = inset + (i%HWEmotionMaxCols) * btnW;//i%HWEmotionMaxCols列号儿
+        btn.y = inset + (i/HWEmotionMaxCols) * btnH;//i/HWEmotionMaxCols行号二
     }
     
-    // 删除按钮
+    // 删除按钮（单独处理）
     self.deleteButton.width = btnW;
     self.deleteButton.height = btnH;
     self.deleteButton.y = self.height - btnH;
@@ -159,12 +160,12 @@
     // 显示popView
     [self.popView showFrom:btn];
     
-    // 等会让popView自动消失
+    // 等会让儿popView自动消失，GCD
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.popView removeFromSuperview];
     });
     
-    // 发出通知
+    // 发出通知：通过代理不现实，太深了！
     [self selectEmotion:btn.emotion];
 }
 
@@ -178,7 +179,7 @@
     // 将这个表情存进沙盒
     [HWEmotionTool addRecentEmotion:emotion];
     
-    // 发出通知
+    // 发出通知：此时没用代理来实现消息和数据的传递，因为代理实现该功能，太深了！object:nil表示谁发的通知，匿名就行了！
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     userInfo[HWSelectEmotionKey] = emotion;
     [HWNotificationCenter postNotificationName:HWEmotionDidSelectNotification object:nil userInfo:userInfo];
