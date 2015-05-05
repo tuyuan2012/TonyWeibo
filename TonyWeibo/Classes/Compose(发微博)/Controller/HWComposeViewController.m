@@ -34,6 +34,7 @@
 #pragma mark - 懒加载
 - (HWEmotionKeyboard *)emotionKeyboard
 {
+//    _emotionKeyboard.delegate = self;//层级结构太深，不宜用代理：此时用通知来实现消息的传递了！
     if (!_emotionKeyboard) {
         self.emotionKeyboard = [[HWEmotionKeyboard alloc] init];
         // 键盘的宽度
