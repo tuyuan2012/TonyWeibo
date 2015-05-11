@@ -28,11 +28,20 @@
 //    [attributedText insertAttributedString:text atIndex:loc];
     [attributedText replaceCharactersInRange:self.selectedRange withAttributedString:text];
     
-    // 调用外面传进来的代码
+    // 调用外面传进来的代码：设置文本的属性
     if (settingBlock) {
         settingBlock(attributedText);
+        /**相当调用了如下的代码：先定义一个block，然后再调用这个block
+         ^(NSMutableAttributedString *attributedText) {
+            // 设置字体
+            [attributedText addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, attributedText.length)];
+         }(attributedText);
+         */
     }
-    
+    /**
+        @property(nonatomic,copy) NSAttributedString *attributedText;
+        copy属性
+     */
     self.attributedText = attributedText;
     
     // 移动光标到表情的后面：设置光标的位置

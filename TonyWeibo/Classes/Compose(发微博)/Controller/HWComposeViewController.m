@@ -178,7 +178,7 @@
  */
 - (void)emotionDidDelete
 {
-    [self.textView deleteBackward];
+    [self.textView deleteBackward];//textView往回删
 }
 
 /**
@@ -196,18 +196,19 @@
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
     /**
-     notification.userInfo = @{
-     // 键盘弹出\隐藏后的frame
-     UIKeyboardFrameEndUserInfoKey = NSRect: {{0, 352}, {320, 216}},
-     // 键盘弹出\隐藏所耗费的时间
-     UIKeyboardAnimationDurationUserInfoKey = 0.25,
-     // 键盘弹出\隐藏动画的执行节奏（先快后慢，匀速）
-     UIKeyboardAnimationCurveUserInfoKey = 7
-     }
+         notification.userInfo = @{
+         // 键盘弹出\隐藏后的frame
+         UIKeyboardFrameEndUserInfoKey = NSRect: {{0, 352}, {320, 216}},
+         // 键盘弹出\隐藏所耗费的时间
+         UIKeyboardAnimationDurationUserInfoKey = 0.25,
+         // 键盘弹出\隐藏动画的执行节奏（先快后慢，匀速）
+         UIKeyboardAnimationCurveUserInfoKey = 7
+         }
      */
-    
+    HWLog(@"keyboardWillChangeFrame-->begin%f",self.toolbar.y);
     // 如果正在切换键盘，就不要执行后面的代码
-    if (self.switchingKeybaord) return;
+    if (self.switchingKeybaord) return;//该布尔值只用来拦截旧键盘
+    HWLog(@"keyboardWillChangeFrame-->end%f",self.toolbar.y);
     
     NSDictionary *userInfo = notification.userInfo;
     // 动画的持续时间
@@ -369,6 +370,9 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 弹出键盘
         [self.textView becomeFirstResponder];
+        
+        // 结束切换键盘
+//        self.switchingKeybaord = NO;//放里面会有bug
     });
 }
 

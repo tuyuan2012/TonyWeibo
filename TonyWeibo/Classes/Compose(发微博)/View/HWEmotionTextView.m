@@ -48,19 +48,23 @@
     }
 }
 
+/**把文字、emoj、图片拼接成一个完整的字符串：发送消息使用*/
 - (NSString *)fullText
 {
     NSMutableString *fullText = [NSMutableString string];
-    
+    HWLog(@"%@",self.attributedText);
     // 遍历所有的属性文字（图片、emoji、普通文字）
     [self.attributedText enumerateAttributesInRange:NSMakeRange(0, self.attributedText.length) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        //将一些内容打印出来，进行研究：学习的好方法啊！
+        HWLog(@"%@  %@",attrs,NSStringFromRange(range));
+        
         // 如果是图片表情
         HWEmotionAttachment *attch = attrs[@"NSAttachment"];
-        if (attch) { // 图片
+        if (attch) { // 图片：拼接上图片对应的文字
             [fullText appendString:attch.emotion.chs];
         } else { // emoji、普通文本
             // 获得这个范围内的文字
-            NSAttributedString *str = [self.attributedText attributedSubstringFromRange:range];
+            NSAttributedString *str = [self.attributedText attributedSubstringFromRange:range];//分段截取每一段内容，如果是表情图片，则将其转成相应的文字
             [fullText appendString:str.string];
         }
     }];

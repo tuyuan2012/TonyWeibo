@@ -165,7 +165,7 @@
         [self.popView removeFromSuperview];
     });
     
-    // 发出通知：通过代理不现实，太深了！
+    // 发出通知：通过代理不现实，太深了！通知控制器操作textView的文字
     [self selectEmotion:btn.emotion];
 }
 
