@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/**
+    宏和const（字符常亮、整型常量建议用它）的区别
+ 
+ */
 // 账号信息
 NSString * const HWAppKey = @"1662641705";
 NSString * const HWRedirectURI = @"http://www.baidu.com";

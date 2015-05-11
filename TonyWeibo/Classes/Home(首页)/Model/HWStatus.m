@@ -132,6 +132,7 @@
     self.attributedText = [self attributedTextWithText:text];
 }
 
+/**转发微博*/
 - (void)setRetweeted_status:(HWStatus *)retweeted_status
 {
     _retweeted_status = retweeted_status;
