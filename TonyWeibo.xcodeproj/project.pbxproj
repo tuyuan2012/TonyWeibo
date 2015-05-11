@@ -12,6 +12,13 @@
 		18728E2F19E37EB8008F3BFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18728E2E19E37EB8008F3BFE /* UIKit.framework */; };
 		18AACFFC1A16FD3200834997 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AACFFB1A16FD3200834997 /* libicucore.dylib */; };
 		5E28434E1AF70EE300DC1121 /* EmotionIcons in Resources */ = {isa = PBXBuildFile; fileRef = 5E28434D1AF70EE300DC1121 /* EmotionIcons */; };
+		E18D99DF1B003A2A00534E37 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D99D51B003A2A00534E37 /* FMDatabase.m */; };
+		E18D99E01B003A2A00534E37 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D99D71B003A2A00534E37 /* FMDatabaseAdditions.m */; };
+		E18D99E11B003A2A00534E37 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D99D91B003A2A00534E37 /* FMDatabasePool.m */; };
+		E18D99E21B003A2A00534E37 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D99DB1B003A2A00534E37 /* FMDatabaseQueue.m */; };
+		E18D99E31B003A2A00534E37 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D99DE1B003A2A00534E37 /* FMResultSet.m */; };
+		E18D99E71B003A6000534E37 /* HWStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E18D99E61B003A6000534E37 /* HWStatusTool.m */; };
+		E18D99E91B003AB900534E37 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E18D99E81B003AB900534E37 /* libsqlite3.dylib */; };
 		E1D867AF1ABEBA5E008200D4 /* HWComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D865C31ABEBA5E008200D4 /* HWComposeViewController.m */; };
 		E1D867B01ABEBA5E008200D4 /* HWEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D865C61ABEBA5E008200D4 /* HWEmotion.m */; };
 		E1D867B11ABEBA5E008200D4 /* HWEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D865C81ABEBA5E008200D4 /* HWEmotionAttachment.m */; };
@@ -139,6 +146,20 @@
 		18728E4919E37EB8008F3BFE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		18AACFFB1A16FD3200834997 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		5E28434D1AF70EE300DC1121 /* EmotionIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EmotionIcons; sourceTree = "<group>"; };
+		E18D99D41B003A2A00534E37 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		E18D99D51B003A2A00534E37 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		E18D99D61B003A2A00534E37 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		E18D99D71B003A2A00534E37 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		E18D99D81B003A2A00534E37 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		E18D99D91B003A2A00534E37 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		E18D99DA1B003A2A00534E37 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		E18D99DB1B003A2A00534E37 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		E18D99DC1B003A2A00534E37 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		E18D99DD1B003A2A00534E37 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		E18D99DE1B003A2A00534E37 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		E18D99E51B003A6000534E37 /* HWStatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWStatusTool.h; sourceTree = "<group>"; };
+		E18D99E61B003A6000534E37 /* HWStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWStatusTool.m; sourceTree = "<group>"; };
+		E18D99E81B003AB900534E37 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		E1D865C21ABEBA5E008200D4 /* HWComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWComposeViewController.h; sourceTree = "<group>"; };
 		E1D865C31ABEBA5E008200D4 /* HWComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWComposeViewController.m; sourceTree = "<group>"; };
 		E1D865C51ABEBA5E008200D4 /* HWEmotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWEmotion.h; sourceTree = "<group>"; };
@@ -370,6 +391,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E18D99E91B003AB900534E37 /* libsqlite3.dylib in Frameworks */,
 				18AACFFC1A16FD3200834997 /* libicucore.dylib in Frameworks */,
 				18728E2D19E37EB8008F3BFE /* CoreGraphics.framework in Frameworks */,
 				18728E2F19E37EB8008F3BFE /* UIKit.framework in Frameworks */,
@@ -400,6 +422,7 @@
 		18728E2919E37EB8008F3BFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E18D99E81B003AB900534E37 /* libsqlite3.dylib */,
 				18AACFFB1A16FD3200834997 /* libicucore.dylib */,
 				18728E2A19E37EB8008F3BFE /* Foundation.framework */,
 				18728E2C19E37EB8008F3BFE /* CoreGraphics.framework */,
@@ -407,6 +430,33 @@
 				18728E4919E37EB8008F3BFE /* XCTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E18D99D31B003A2A00534E37 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				E18D99D41B003A2A00534E37 /* FMDatabase.h */,
+				E18D99D51B003A2A00534E37 /* FMDatabase.m */,
+				E18D99D61B003A2A00534E37 /* FMDatabaseAdditions.h */,
+				E18D99D71B003A2A00534E37 /* FMDatabaseAdditions.m */,
+				E18D99D81B003A2A00534E37 /* FMDatabasePool.h */,
+				E18D99D91B003A2A00534E37 /* FMDatabasePool.m */,
+				E18D99DA1B003A2A00534E37 /* FMDatabaseQueue.h */,
+				E18D99DB1B003A2A00534E37 /* FMDatabaseQueue.m */,
+				E18D99DC1B003A2A00534E37 /* FMDB.h */,
+				E18D99DD1B003A2A00534E37 /* FMResultSet.h */,
+				E18D99DE1B003A2A00534E37 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		E18D99E41B003A6000534E37 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				E18D99E51B003A6000534E37 /* HWStatusTool.h */,
+				E18D99E61B003A6000534E37 /* HWStatusTool.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		E1D865BE1ABEBA5E008200D4 /* TonyWeibo */ = {
@@ -545,6 +595,7 @@
 		E1D865E81ABEBA5E008200D4 /* Home(首页) */ = {
 			isa = PBXGroup;
 			children = (
+				E18D99E41B003A6000534E37 /* Tool */,
 				E1D865E91ABEBA5E008200D4 /* Controller */,
 				E1D865EC1ABEBA5E008200D4 /* Model */,
 				E1D865F91ABEBA5E008200D4 /* View */,
@@ -654,6 +705,7 @@
 		E1D866231ABEBA5E008200D4 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				E18D99D31B003A2A00534E37 /* fmdb */,
 				E1D866241ABEBA5E008200D4 /* AFNetworking */,
 				E1D866381ABEBA5E008200D4 /* MBProgressHUD */,
 				E1D8663E1ABEBA5E008200D4 /* MJExtension */,
@@ -1084,10 +1136,12 @@
 				E1D867C31ABEBA5E008200D4 /* HWStatusFrame.m in Sources */,
 				E1D867DA1ABEBA5E008200D4 /* AFHTTPRequestOperation.m in Sources */,
 				E1D867FE1ABEBA5E008200D4 /* SDWebImageDecoder.m in Sources */,
+				E18D99E11B003A2A00534E37 /* FMDatabasePool.m in Sources */,
 				E1D867D61ABEBA5E008200D4 /* UIView+Extension.m in Sources */,
 				E1D867B61ABEBA5E008200D4 /* HWEmotionKeyboard.m in Sources */,
 				E1D868041ABEBA5E008200D4 /* UIImage+GIF.m in Sources */,
 				E1D867B71ABEBA5E008200D4 /* HWEmotionListView.m in Sources */,
+				E18D99E01B003A2A00534E37 /* FMDatabaseAdditions.m in Sources */,
 				E1D867B41ABEBA5E008200D4 /* HWComposeToolbar.m in Sources */,
 				E1D867BD1ABEBA5E008200D4 /* HWEmotionTextView.m in Sources */,
 				E1D867D51ABEBA5E008200D4 /* UITextView+Extension.m in Sources */,
@@ -1105,6 +1159,7 @@
 				E1D868131ABEBA5E008200D4 /* HWMessageCenterViewController.m in Sources */,
 				E1D867B51ABEBA5E008200D4 /* HWEmotionButton.m in Sources */,
 				E1D867CD1ABEBA5E008200D4 /* HWTitleButton.m in Sources */,
+				E18D99E71B003A6000534E37 /* HWStatusTool.m in Sources */,
 				E1D867B11ABEBA5E008200D4 /* HWEmotionAttachment.m in Sources */,
 				E1D867FB1ABEBA5E008200D4 /* NSData+ImageContentType.m in Sources */,
 				E1D867C41ABEBA5E008200D4 /* HWTextPart.m in Sources */,
@@ -1117,9 +1172,11 @@
 				E1D867E21ABEBA5E008200D4 /* AFURLSessionManager.m in Sources */,
 				E1D867CB1ABEBA5E008200D4 /* HWStatusTextView.m in Sources */,
 				E1D867EB1ABEBA5E008200D4 /* MJMethod.m in Sources */,
+				E18D99E31B003A2A00534E37 /* FMResultSet.m in Sources */,
 				E1D868101ABEBA5E008200D4 /* HWSearchBar.m in Sources */,
 				E1D867BF1ABEBA5E008200D4 /* HWHomeViewController.m in Sources */,
 				E1D867D31ABEBA5E008200D4 /* NSString+Extension.m in Sources */,
+				E18D99DF1B003A2A00534E37 /* FMDatabase.m in Sources */,
 				E1D868191ABEBA5E008200D4 /* HWTest1ViewController.m in Sources */,
 				E1D867F51ABEBA5E008200D4 /* MJRefreshHeaderView.m in Sources */,
 				E1D867F01ABEBA5E008200D4 /* NSObject+MJMember.m in Sources */,
@@ -1147,6 +1204,7 @@
 				E1D867EA1ABEBA5E008200D4 /* MJMember.m in Sources */,
 				E1D867B31ABEBA5E008200D4 /* HWComposePhotosView.m in Sources */,
 				E1D868061ABEBA5E008200D4 /* UIImage+WebP.m in Sources */,
+				E18D99E21B003A2A00534E37 /* FMDatabaseQueue.m in Sources */,
 				E1D8680C1ABEBA5E008200D4 /* main.m in Sources */,
 				E1D8680E1ABEBA5E008200D4 /* HWDropdownMenu.m in Sources */,
 				E1D8680A1ABEBA5E008200D4 /* HWAppDelegate.m in Sources */,
