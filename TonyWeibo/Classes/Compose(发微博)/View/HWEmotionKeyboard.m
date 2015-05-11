@@ -93,6 +93,7 @@
     [HWNotificationCenter removeObserver:self];
 }
 
+/**子控件的位置和大小在该方法中设置*/
 - (void)layoutSubviews
 {
     [super layoutSubviews];

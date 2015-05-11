@@ -23,8 +23,9 @@
 @property (nonatomic, weak) HWComposeToolbar *toolbar;
 /** 相册（存放拍照或者相册中选择的图片） */
 @property (nonatomic, weak) HWComposePhotosView *photosView;
-#warning 一定要用strong
-/** 表情键盘 */
+#warning 一定要用strong，保住它的命：当没有任何指针指向它的时候，它依然还活着！
+/** 表情键盘，所有的UI控件你都用强指针，也是没问题的，只是你能用弱指针，就用弱指针，因为弱指针有时比较安全
+    但此时的键盘，我们需要保住它的命，所有用强指针strong！*/
 @property (nonatomic, strong) HWEmotionKeyboard *emotionKeyboard;
 /** 是否正在切换键盘 */
 @property (nonatomic, assign) BOOL switchingKeybaord;
@@ -34,12 +35,19 @@
 #pragma mark - 懒加载
 - (HWEmotionKeyboard *)emotionKeyboard
 {
+    if (!_emotionKeyboard) {/**键盘只创建一次*/
 //    _emotionKeyboard.delegate = self;//层级结构太深，不宜用代理：此时用通知来实现消息的传递了！
-    if (!_emotionKeyboard) {
         self.emotionKeyboard = [[HWEmotionKeyboard alloc] init];
         // 键盘的宽度
         self.emotionKeyboard.width = self.view.width;
         self.emotionKeyboard.height = 216;
+        
+        /** 如下写是有问题的：此时当，inputView一旦清空为nil，那么emotionKeyboard就挂了！所以这个键盘一定要用strong强指针！
+         HWEmotionKeyboard *emotionKeyboard = [[HWEmotionKeyboard alloc] init];
+         emotionKeyboard.width = self.view.width;
+         emotionKeyboard.height = 216.0f;
+         self.textView.inputView = emotionKeyboard;
+         */
     }
     return _emotionKeyboard;
 }
@@ -334,7 +342,7 @@
             break;
             
         case HWComposeToolbarButtonTypeEmotion: // 表情\键盘
-            [self switchKeyboard];
+            [self switchKeyboard];//切换键盘
             break;
     }
 }
@@ -345,7 +353,7 @@
  */
 - (void)switchKeyboard
 {
-    // self.textView.inputView == nil : 使用的是系统自带的键盘
+    // self.textView.inputView == nil ;//此时说明使用的是系统自带的键盘
     if (self.textView.inputView == nil) { // 切换为自定义的表情键盘
         self.textView.inputView = self.emotionKeyboard;
         
@@ -363,6 +371,9 @@
     
     // 退出键盘
     [self.textView endEditing:YES];
+//    [self.view endEditing:YES];
+//    [self.view.window endEditing:YES];
+//    [self.textView resignFirstResponder];
     
     // 结束切换键盘
     self.switchingKeybaord = NO;
