@@ -20,7 +20,7 @@
 #import "HWStatusCell.h"
 #import "HWStatusFrame.h"
 #import "MJRefresh.h"
-
+#import "HWStatusTool.h"
 @interface HWHomeViewController () <HWDropdownMenuDelegate>
 /**
  *  微博数组（里面放的都是HWStatusFrame模型，一个HWStatusFrame对象就代表一条微博）
@@ -140,30 +140,30 @@
  */
 - (void)loadNewStatus
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSDictionary *responseObject = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fakeStatus" ofType:@"plist"]];
-        // 将 "微博字典"数组 转为 "微博模型"数组
-        NSArray *newStatuses = [HWStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-        
-        // 将 HWStatus数组 转为 HWStatusFrame数组
-        NSArray *newFrames = [self stausFramesWithStatuses:newStatuses];
-        
-        // 将最新的微博数据，添加到总数组的最前面
-        NSRange range = NSMakeRange(0, newFrames.count);
-        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
-        [self.statusFrames insertObjects:newFrames atIndexes:set];
-        
-        // 刷新表格
-        [self.tableView reloadData];
-        
-        // 结束刷新
-        [self.tableView headerEndRefreshing];
-        
-        // 显示最新微博的数量
-        [self showNewStatusCount:newStatuses.count];
-    });
-    
-    return;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        NSDictionary *responseObject = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fakeStatus" ofType:@"plist"]];
+//        // 将 "微博字典"数组 转为 "微博模型"数组
+//        NSArray *newStatuses = [HWStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+//        
+//        // 将 HWStatus数组 转为 HWStatusFrame数组
+//        NSArray *newFrames = [self stausFramesWithStatuses:newStatuses];
+//        
+//        // 将最新的微博数据，添加到总数组的最前面
+//        NSRange range = NSMakeRange(0, newFrames.count);
+//        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
+//        [self.statusFrames insertObjects:newFrames atIndexes:set];
+//        
+//        // 刷新表格
+//        [self.tableView reloadData];
+//        
+//        // 结束刷新
+//        [self.tableView headerEndRefreshing];
+//        
+//        // 显示最新微博的数量
+//        [self showNewStatusCount:newStatuses.count];
+//    });
+//    
+//    return;
     
     // 1.拼接请求参数
     HWAccount *account = [HWAccountTool account];
@@ -177,10 +177,10 @@
         params[@"since_id"] = firstStatusF.status.idstr;
     }
     
-    // 2.发送请求
-    [HWHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
+    // 定义一个block处理返回的字典数据
+    void (^dealingResult)(NSArray *) = ^(NSArray *statuses){
         // 将 "微博字典"数组 转为 "微博模型"数组
-        NSArray *newStatuses = [HWStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+        NSArray *newStatuses = [HWStatus objectArrayWithKeyValuesArray:statuses];
         
         // 将 HWStatus数组 转为 HWStatusFrame数组
         NSArray *newFrames = [self stausFramesWithStatuses:newStatuses];
@@ -198,12 +198,25 @@
         
         // 显示最新微博的数量
         [self showNewStatusCount:newStatuses.count];
-    } failure:^(NSError *error) {
-        HWLog(@"请求失败-%@", error);
-        
-        // 结束刷新刷新
-        [self.tableView headerEndRefreshing];
-    }];
+    };
+    
+    // 2.先尝试从数据库中加载微博数据
+    NSArray *statuses = [HWStatusTool statusesWithParams:params];
+    if (statuses.count) { // 数据库有缓存数据
+        dealingResult(statuses);
+    } else {
+        // 2.发送请求
+        [HWHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
+            [HWStatusTool saveStatuses:json[@"statuses"]];
+            
+            dealingResult(json[@"statuses"]);
+        } failure:^(NSError *error) {
+            HWLog(@"请求失败-%@", error);
+            
+            // 结束刷新刷新
+            [self.tableView headerEndRefreshing];
+        }];
+    }
 }
 
 /**
