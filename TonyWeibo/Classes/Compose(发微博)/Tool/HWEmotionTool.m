@@ -16,9 +16,19 @@
 @implementation HWEmotionTool
 
 static NSMutableArray *_recentEmotions;
+/**
+    static 全局的，可以改的，如果在一个类中声明static，类中其他地方用到的时候，也是使用的改变量。和java类似，但不能用类名直接访问。
+ */
+/**
+    类方法不能访问成员变量
+ */
 
+/**
+    initialize该方法只调一次
+ */
 + (void)initialize
 {
+    //得遵守NSCoding协议
     _recentEmotions = [NSKeyedUnarchiver unarchiveObjectWithFile:HWRecentEmotionsPath];
     if (_recentEmotions == nil) {
         _recentEmotions = [NSMutableArray array];
@@ -48,7 +58,7 @@ static NSMutableArray *_recentEmotions;
     // 将表情放到数组的最前面
     [_recentEmotions insertObject:emotion atIndex:0];
     
-    // 将所有的表情数据写入沙盒
+    // 将所有的表情数据写入沙盒：得遵守NSCoding协议
     [NSKeyedArchiver archiveRootObject:_recentEmotions toFile:HWRecentEmotionsPath];
 }
 

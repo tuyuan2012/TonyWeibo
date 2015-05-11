@@ -21,6 +21,7 @@
 + (void)saveAccount:(HWAccount *)account
 {
     // 自定义对象的存储必须用NSKeyedArchiver，不再有什么writeToFile（字典、数组、字符串的方法））方法
+    /**得遵守NSCoding协议*/
     [NSKeyedArchiver archiveRootObject:account toFile:HWAccountPath];
 }
 
@@ -33,7 +34,7 @@
 + (HWAccount *)account
 {
     HWLog(@"路径--->%@",HWAccountPath);
-    // 加载模型
+    // 加载模型：得遵守NSCoding协议
     HWAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:HWAccountPath];
     
     /* 验证账号是否过期 */

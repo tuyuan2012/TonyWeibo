@@ -25,6 +25,9 @@ MJCodingImplementation
 //        self.chs = [decoder decodeObjectForKey:@"chs"];
 //        self.png = [decoder decodeObjectForKey:@"png"];
 //        self.code = [decoder decodeObjectForKey:@"code"];
+////        [self enumerateIvarsWithBlock:^(MJIvar *ivar, BOOL *stop) {/**等同上面分别赋值的代码*/
+////            ivar.value = [decoder decodeObjectForKey:ivar.name];
+////        }];
 //    }
 //    return self;
 //}
@@ -45,10 +48,13 @@ MJCodingImplementation
  *  @param other 另外一个HWEmotion对象
  *
  *  @return YES : 代表2个对象是一样的，NO: 代表2个对象是不一样
+ 
+    [emotions removeObject:emotion];
+    此时怎么来判断移走拿个emotion，此时就会调用Emotion的isEqual方法
  */
 - (BOOL)isEqual:(HWEmotion *)other
 {
-//    if (self == other) {
+//    if (self == other) {/**系统默认的比较方法，写法*/
 //        return YES;
 //    } else {
 //        return NO;
