@@ -35,7 +35,7 @@
     CGFloat nameY = iconY;
     CGSize nameSize = [user.name sizeWithFont:HWStatusCellNameFont];
     self.nameLabelF = (CGRect){{nameX, nameY}, nameSize};
-    
+
     /** 会员图标 */
     if (user.isVip) {
         CGFloat vipX = CGRectGetMaxX(self.nameLabelF) + HWStatusCellBorderW;

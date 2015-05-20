@@ -127,7 +127,6 @@
 - (void)setText:(NSString *)text
 {
     _text = [text copy];
-    
     // 利用text生成attributedText
     self.attributedText = [self attributedTextWithText:text];
 }
