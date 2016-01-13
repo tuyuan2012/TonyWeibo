@@ -1068,7 +1068,7 @@
 				ORGANIZATIONNAME = heima;
 				TargetAttributes = {
 					18728E2619E37EB8008F3BFE = {
-						DevelopmentTeam = PCUTZ5RAXB;
+						DevelopmentTeam = R65EXHH74Q;
 					};
 				};
 			};
@@ -1327,6 +1327,7 @@
 				GCC_PREFIX_HEADER = "TonyWeibo/TonyWeibo-Prefix.pch";
 				INFOPLIST_FILE = "TonyWeibo/TonyWeibo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-6xue.TonyWeibo";
 				PRODUCT_NAME = TonyWeibo;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1344,6 +1345,7 @@
 				GCC_PREFIX_HEADER = "TonyWeibo/TonyWeibo-Prefix.pch";
 				INFOPLIST_FILE = "TonyWeibo/TonyWeibo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-6xue.TonyWeibo";
 				PRODUCT_NAME = TonyWeibo;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
